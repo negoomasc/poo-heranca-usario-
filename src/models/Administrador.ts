@@ -4,10 +4,14 @@ import { Usuario } from './Usuario';
 export class Administrador extends Usuario {
   constructor(nome, email, codigoSeguranca) {
     super(nome, email);
-    this.codigoSeguranca = codigoSeguranca;
+    this._codigoSeguranca = codigoSeguranca;
+  }
+
+  getCodigoSeguranca() {
+    return this._codigoSeguranca;
   }
 
   autenticarComCodigo(senha, codigo) {
-    return this.autenticar(senha) && codigo === this.codigoSeguranca;
+    return this.autenticar(senha) && codigo === this._codigoSeguranca;
   }
 }
